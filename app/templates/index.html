@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Home | ToDo App{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Welcome to Your ToDo App</h2>
+    <p class="text-center">Keep track of your tasks and stay organized.</p>
+
+    <div class="d-flex justify-content-center">
+        <a href="{{ url_for('routes.login') }}" class="btn btn-primary me-3">Login</a>
+        <a href="{{ url_for('routes.register') }}" class="btn btn-secondary">Sign Up</a>
+    </div>
+</div>
+{% endblock %}
