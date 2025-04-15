@@ -26,7 +26,7 @@ A simple yet functional To-Do web application built using **Flask**. It allows u
 
 1. **Clone the repo**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/flask-todo-app.git
+   git clone https://github.com/ISannan-Ahmad/Flask_Todo_App.git
    cd flask-todo-app
    ```
 
