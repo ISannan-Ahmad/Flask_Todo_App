@@ -4,7 +4,7 @@ from flask_login import current_user, login_user, login_required, logout_user
 from . import db
 from .models import User, Task
 from .forms import RegisterForm, LoginForm
-
+from datetime import datetime
 routes = Blueprint('routes', __name__)
 
 @routes.route('/')
@@ -72,11 +72,18 @@ def dashboard():
     tasks = current_user.tasks
     if request.method == "POST":
         task = request.form.get("task")
-        new_task = Task(content=task, user_id=current_user.id)
-        db.session.add(new_task)
-        db.session.commit()
-        flash("Task Added Successfully", "success")
-        return redirect(url_for('routes.dashboard'))
+        priority = request.form.get("priority")
+        due_date = request.form.get("date")    
+        due_date = datetime.strptime(due_date, "%Y-%m-%d").date()
+        current_date = datetime.today().date()
+        if due_date >= current_date:
+            new_task = Task(content=task, user_id=current_user.id, priority=priority, due_date=due_date)
+            db.session.add(new_task)
+            db.session.commit()
+            flash("Task Added Successfully", "success")
+            return redirect(url_for('routes.dashboard'))
+        else:
+            flash("Due date cannot be in the past")
 
     return render_template("dashboard.html", tasks = tasks)
 
@@ -103,10 +110,20 @@ def edit_task(task_id):
 
     if request.method == "POST":
         updated_content = request.form.get("task")
-        task.content = updated_content
-        db.session.commit()
-        flash("Task updated successfully!", "success")
-        return redirect(url_for("routes.dashboard"))
+        updated_priority = request.form.get("priority")
+        updated_due_date = request.form.get("date")
+        updated_due_date = datetime.strptime(updated_due_date, "%Y-%m-%d").date()
+        current_date = datetime.today().date()
+        if updated_due_date >= current_date:
+            task.content = updated_content
+            task.priority = updated_priority
+            task.due_date = updated_due_date
+            db.session.commit()
+            flash("Task updated successfully!", "success")
+            return redirect(url_for("routes.dashboard"))
+        else:
+            flash("Date cannot be in the past")
+            return redirect(url_for("routes.dashboard"))
 
     return render_template("edit.html", task=task)
 
@@ -123,7 +140,7 @@ def logout():
 def toggle_status(task_id):
     task = db.get_or_404(Task, task_id)
     if task.user_id != current_user.id:
-        return redirect(url_for('routes.dashboard'))    
+        return redirect(url_for('routes.dashboard'))
     
     task.done = not task.done
     db.session.commit()

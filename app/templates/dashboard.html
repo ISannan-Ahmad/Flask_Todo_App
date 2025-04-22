@@ -8,29 +8,54 @@
 
     <!-- Add Task Form -->
     <form method="POST" class="d-flex mb-4" action="{{ url_for('routes.dashboard') }}">
-        <div class="form-group flex-grow-1">
+        <div class="form-group" style="width: 700px;">
             <input type="text" name="task" class="form-control" placeholder="Enter a new task..." required>
         </div>
         <button type="submit" class="btn btn-primary ms-3">Add Task</button>
-    </form>
 
+        <select name="priority" id="task-priority" class="form-select form-select-sm" style="width: 100px; margin-left: 12px;">
+            <option value="High" selected>High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+        </select>
+
+        <input type="date" name="date" class="ms-3 form-control-sm" required>
+        
+
+
+        <hr>
+    </form>
     <!-- Task List -->
     <h4 class="mb-4">Your Tasks</h4>
     {% if tasks %}
         <ul class="list-group">
             {% for task in tasks %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <span class="{{ 'text-decoration-line-through text-muted' if task.done else '' }}">
+                    <span class="{{ 'text-decoration-line-through text-muted' if task.done else '' }}" style="width: 60%;">
                         {{ task.content }}
                     </span>
+
                     
-                    <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-center justify-content-end" style="width: 40%;">
+                            
+                        <span class="badge me-3 bg-success" style="height: 33px; text-align: center;">
+                            {{ task.due_date }}
+                        </span>
+
+                        <span class="badge me-3 p-2 {{ 'bg-danger' if task.priority == 'High' else 'bg-warning text-dark' if task.priority == 'Medium' else 'bg-success' }}" style="height: 33px; text-align: center;">
+                            {{ task.priority }}
+                        </span>
+                        
+                        
                         <a href="{{ url_for('routes.toggle_status', task_id=task.id) }}" 
-                           class="btn btn-sm me-2 {{ 'btn-success' if not task.done else 'btn-secondary' }}">
+                           class="btn btn-sm me-3 {{ 'btn-success' if not task.done else 'btn-secondary' }}">
                             {{ 'Mark as Done' if not task.done else 'Undo' }}
                         </a>
-                        <a href="{{ url_for('routes.edit_task', task_id=task.id) }}" class="btn btn-warning btn-sm me-2">Edit</a>
+                        
+                        <a href="{{ url_for('routes.edit_task', task_id=task.id) }}" class="btn btn-warning btn-sm me-3">Edit</a>
+                        
                         <a href="{{ url_for('routes.delete_task', task_id=task.id) }}" class="btn btn-danger btn-sm">Delete</a>
+                    
                     </div>
                     
                 </li>

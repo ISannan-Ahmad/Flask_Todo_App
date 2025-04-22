@@ -15,3 +15,5 @@ class Task(db.Model):
     content = db.Column(db.String(200), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     done = db.Column(db.Boolean, default=False)
+    priority = db.Column(db.String(10), default="Low")
+    due_date = db.Column(db.Date, nullable=False)
