@@ -9,3 +9,15 @@ instance/
 *.sqlite3
 *.db
 .DS_Store
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
