@@ -1,61 +1,58 @@
-import React, {useState} from 'react'
+import { useState } from "react";
 
-function AddTaskForm({onAddTask}) {
-    const [title, setTitle] = useState("");
-    const [dueDate, setDueDate] = useState("");
-    const [priority, setPriority] = useState("");
+const AddTaskForm = ({ onAddTask }) => {
+  const [title, setTitle] = useState("");
+  const [dueDate, setDueDate] = useState("");
+  const [priority, setPriority] = useState("Medium");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-        if (!title || !dueDate){
-            alert("Please Fill in all the Fields");
-            return;
-        }
+    if (!title || !dueDate) return;
 
-        const newTask = {
-            title,
-            dueDate,
-            priority
-        };
-        onAddTask(newTask);
-        setDueDate("");
-        setTitle("");
-        setPriority("Medium");
-    }
+    const newTask = { title, dueDate, priority };
+    onAddTask(newTask);
 
-    return (
-        <form onSubmit={handleSubmit} className='flex flex-col gap-4 p-4 border rounded-l-xl shadow-md'>
-            <input 
-                type="text"
-                placeholder='Task Title'
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                className='border p-2 rounded'
-            />
-            
-            <input 
-                type="date" 
-                value={dueDate}
-                onChange={(e) => setDueDate(e.target.value)}
-                className='border p-2 rounded'
-            />
+    setTitle("");
+    setDueDate("");
+    setPriority("Medium");
+  };
 
-            <select 
-                value={priority}
-                onChange={(e) => setPriority(e.target.value)}
-                className='border p-2 rounded'
-            >
-                <option value="High">High</option>
-                <option value="Medium">Medium</option>
-                <option value="Low">Low</option>
-            </select>
+  return (
 
-            <button type="submit" className='bg-blue-500 text-white p-2 rounded hover:bg-blue-700 ' >
-                Add Task
-            </button>
-        </form>
-    );
-}
+    <form onSubmit={handleSubmit} className="bg-white p-4 rounded-xl shadow mb-4 flex flex-wrap gap-2 items-center">
+      <input
+        type="text"
+        placeholder="Task title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        className="flex-1 min-w-[120px] border rounded px-3 py-2"
+        required
+      />
 
-export default AddTaskForm
+      <input
+        type="date"
+        value={dueDate}
+        onChange={(e) => setDueDate(e.target.value)}
+        className="border rounded px-3 py-2"
+        required
+      />
+
+      <select
+        value={priority}
+        onChange={(e) => setPriority(e.target.value)}
+        className="border rounded px-3 py-2"
+      >
+        <option>High</option>
+        <option>Medium</option>
+        <option>Low</option>
+      </select>
+
+      <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+        Add
+      </button>
+    </form>
+  );
+};
+
+export default AddTaskForm;

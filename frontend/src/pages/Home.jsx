@@ -1,50 +1,41 @@
-import React, {useState, useEffect} from 'react';
+// src/pages/Home.jsx
+import { useState } from "react";
 import TaskItem from "../components/TaskItem";
+import AddTaskForm from "../components/AddTaskForm";
 
-function Home() {
-    
-    const [tasks, setTasks] = useState([]);
+const Home = () => {
+  const [tasks, setTasks] = useState([
+    {
+      id: 1,
+      title: "Buy groceries",
+      dueDate: "2025-04-30",
+      priority: "High",
+      completed: false,
+    },
+    {
+      id: 2,
+      title: "Finish React homework",
+      dueDate: "2025-05-01",
+      priority: "Medium",
+      completed: false,
+    },
+  ]);
 
-     // TEMP: Sample tasks for now
-    useEffect(() => {
-    setTasks([
-        {
-            id: 1,
-            title: "Finish project report",
-            dueDate: "2025-05-01",
-            priority: "High",
-        },
-        {
-            id: 2,
-            title: "Buy groceries",
-            dueDate: "2025-04-30",
-            priority: "Low",
-        },
-        ]);
-    }, []);
+  const handleAddTask = (task) => {
+    setTasks((prev) => [...prev, task]);
+  };
 
-    const handleDelete = (id) => {
-        setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
-      };
-    
-      const handleEdit = (taskToEdit) => {
-        // Later we'll open a form and populate it with this task
-        console.log("Editing task:", taskToEdit);
-      };
-
-    return (
-        <div className="max-w-2xl mx-auto mt-10 space-y-4">
-        <h1 className="text-2xl font-bold mb-4">Your Tasks</h1>
+  return (
+    <div className="p-10 w-[70%] mx-auto">
+      <h1 className="text-2xl font-bold mb-4">My Tasks</h1>
+      <div className="space-y-4">
+        <AddTaskForm onAddTask={handleAddTask} />
         {tasks.map((task) => (
-          <TaskItem
-            key={task.id}
-            task={task}
-            onDelete={handleDelete}
-            onEdit={handleEdit}
-          />
+          <TaskItem key={task.id} task={task} />
         ))}
       </div>
-    )
-}
+    </div>
+  );
+};
 
-export default Home
+export default Home;
