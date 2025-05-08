@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}About | ToDo App{% endblock %}
+
+{% block content %}
+<div class="animate-slide-up max-w-4xl mx-auto px-4 py-8">
+    <!-- Header -->
+    <div class="text-center mb-10">
+        <h1 class="text-3xl font-bold text-gray-800">About ToDo App</h1>
+        <p class="text-gray-600 mt-2">Your productivity companion</p>
+    </div>
+
+    <!-- Main Content -->
+    <div>
+        <!-- App Description -->
+        <div class="p-8">
+            <div class="flex flex-col md:flex-row gap-8 items-center mb-10">
+                <div class="md:w-1/2">
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Streamline Your Tasks</h2>
+                    <p class="text-gray-600 mb-4">
+                        ToDo App is designed to help you organize your life with simplicity and efficiency. 
+                        Whether you're managing work projects, personal goals, or daily chores, our intuitive 
+                        interface keeps everything in one place.
+                    </p>
+                    <p class="text-gray-600">
+                        With priority levels, due dates, and completion tracking, you'll never miss an important 
+                        task again.
+                    </p>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+                         alt="Task management illustration" 
+                         class="rounded-lg shadow-sm">
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="mb-10">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Key Features</h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-medium text-gray-800 mb-2">Task Management</h3>
+                        <p class="text-gray-600">Create, edit, and organize tasks with ease using our intuitive interface.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-medium text-gray-800 mb-2">Priority System</h3>
+                        <p class="text-gray-600">Mark tasks as High, Medium, or Low priority to focus on what matters most.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-medium text-gray-800 mb-2">Due Dates</h3>
+                        <p class="text-gray-600">Set deadlines and never miss an important task again.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How It Works -->
+            <div class="mb-10">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">How It Works</h2>
+                <div class="space-y-6">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 mt-1">1</div>
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-800 mb-2">Create Your Account</h3>
+                            <p class="text-gray-600">Sign up for free and start organizing your tasks immediately.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 mt-1">2</div>
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-800 mb-2">Add Your Tasks</h3>
+                            <p class="text-gray-600">Enter tasks, set priorities, and add due dates as needed.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 mt-1">3</div>
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-800 mb-2">Stay Organized</h3>
+                            <p class="text-gray-600">Filter, sort, and search your tasks to focus on what's important.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="text-center bg-primary-50 rounded-lg p-8">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Ready to Boost Your Productivity?</h2>
+                <p class="text-gray-600 mb-6">Join thousands of users who are getting more done with ToDo App.</p>
+                <a href="{{ url_for('routes.register') }}" class="inline-block px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition duration-200">
+                    Get Started Now
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

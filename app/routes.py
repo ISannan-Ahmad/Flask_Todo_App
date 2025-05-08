@@ -145,3 +145,7 @@ def toggle_status(task_id):
     task.done = not task.done
     db.session.commit()
     return redirect(url_for('routes.dashboard'))
+
+@routes.route('/about')
+def about():
+    return render_template("about.html")
